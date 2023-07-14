@@ -9,7 +9,7 @@ def calcMeanDF(data, index):
 
 if __name__=="__main__":
     # Load data
-    data = pd.read_csv("experiment2-2023-04-26-094737.csv")
+    data = pd.read_csv("experiment2-2023-07-14-155129.csv")
 
     # Pivot data
     pdata = calcMeanDF(data, ['p', 'sigma_t'])
