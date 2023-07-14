@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import LogLocator as ll
 
 
 def calcMeanDF(data, index):
@@ -15,7 +16,7 @@ if __name__=="__main__":
     pdata = calcMeanDF(data, ['p', 'sigma_t'])
 
     # Plot everything
-    fig, axs = plt.subplots(2, 2, sharex=True, sharey='row', constrained_layout=True)
+    fig, axs = plt.subplots(2, 2, sharex=True, sharey='row', constrained_layout=True, figsize=(6.4, 3.48))
 
     for pi, p in enumerate(pdata["p"].unique()):
         subdata = pdata.loc[pdata["p"] == p]
@@ -47,8 +48,10 @@ if __name__=="__main__":
                                 alpha = 0.3, \
                                 label = prefix.upper() + ",[min,max]")
 
+                ax.yaxis.set_major_locator(ll(numticks=50))
+
             ax.grid(which="both", alpha = 0.3)
-    axs[-1, -1].legend(fontsize = 8)
+    axs[-1, -1].legend(fontsize = 6, loc="upper left")
 
     plt.show(block=False)
     plt.savefig("experiment2_fig.pdf")
